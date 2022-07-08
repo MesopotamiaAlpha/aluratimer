@@ -1,9 +1,20 @@
 const { ipcRenderer } = require("electron");
 const timer = require("./timer");
+const data = require("../data");
 
 let linkSobre = document.querySelector('#link-sobre');
 let botaoPlay = document.querySelector('.botao-play');
 let tempo = document.querySelector('.tempo');
+let curso = document.querySelector('.curso');
+
+
+window.onload = () => {
+    data.pegaDados(curso.textContent)
+    .then((dados) => {
+        console.log(dados);
+        tempo.textContent = dados.tempo;
+    })
+}
 
 linkSobre.addEventListener('click', () => {
     ipcRenderer.send('abrir-janela-sobre');
@@ -15,7 +26,7 @@ botaoPlay.addEventListener('click', function () {
         imgs = imgs.reverse();
         
         if (play) {
-            timer.parar();
+            timer.parar(curso.textContent);
             
             play = false;
         }else{

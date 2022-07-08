@@ -1,6 +1,6 @@
 @font-face {
-     font-family: Roboto;
-     src: url(../fonts/Roboto/Roboto-Light.ttf) format('truetype');;
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Light.ttf) format('truetype');;
 }
 
 *{
@@ -9,10 +9,10 @@
     box-sizing: border-box;
 }
 html, body {
-   height: 100%;
-   width: 100%;
-   font-family: 'Roboto', sans-serif;
-   background: url(../img/texture.png) top left repeat;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: url(../img/texture.png) top left repeat;
 }
 .titulo{
     color: #5271FF;
