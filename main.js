@@ -1,4 +1,4 @@
-const {app , BrowserWindow, ipcMain} = require('electron');
+const {app , BrowserWindow, ipcMain, ipcRenderer} = require('electron');
 
 
 app.on ('ready', () => {
@@ -19,16 +19,16 @@ app.on('window-all-closed', () => {
     app.quit();
 });
 
-
-// main.js
-
 let sobreWindow = null;
 
 ipcMain.on('abrir-janela-sobre', () => {
     if(sobreWindow == null) {
         sobreWindow = new BrowserWindow({
             width: 300,
-            height: 220
+            height: 220,
+            //por algum motivo no linux ele nao está deixando em cima
+            alwaysOnTop: true,
+            frame: false,
         });
         sobreWindow.on('closed', () => {
             sobreWindow = null;
@@ -36,3 +36,8 @@ ipcMain.on('abrir-janela-sobre', () => {
     }
     sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
 });
+
+ipcMain.on('fechar-janela-sobre', () => {
+    sobreWindow.close();
+    }
+    );
