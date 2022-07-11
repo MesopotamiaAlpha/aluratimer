@@ -39,3 +39,11 @@ botaoPlay.addEventListener('click', function () {
 
 
 
+ipcRenderer.on('curso-trocado',(event,nomeCurso) => {
+    data.pegaDados(nomeCurso)
+    .then((dados) => {
+        tempo.textContent = dados.tempo;
+    })
+
+    curso.textContent = nomeCurso;
+})

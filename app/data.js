@@ -40,6 +40,13 @@ module.exports = {
     pegaDados(curso){
         let arquivoDoCurso = __dirname = './app/data/' + curso + '.json';
         return jsonfile.readFile(arquivoDoCurso);
+    },
+    pegaNomeDosCursos(){
+        let arquivos = fs.readdirSync(__dirname + '/data');
+        let cursos = arquivos.map(arquivo => {
+            return arquivo.replace('.json', '');
+        });
+        return cursos;
     }
 
 }
